@@ -14,12 +14,11 @@
       "homepage": "https://rave.wiki",
       "keywords": [
         "rave",
-        "yael",
         "ieeg",
         "neuroscience",
         "electrophysiology",
         "brain",
-        "localization",
+        "shiny",
         "threebrain",
         "mcp"
       ]
