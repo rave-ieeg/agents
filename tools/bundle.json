@@ -10,7 +10,7 @@
   "plugin": {
     "name": "rave-agents",
     "displayName": "RAVE Agents",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Let AI agents work with RAVE (Reproducible Analysis and Visualization of iEEG, rave.wiki): drive the RAVE dashboard and its modules, control threeBrain 3D brain viewers, and search the literature.",
     "author": {
       "name": "rave-ieeg",
@@ -48,6 +48,10 @@
     {
       "from": "tools/licenses/MPL-2.0.txt",
       "to": "servers/threebrain/LICENSE"
+    },
+    {
+      "from": "tools/licenses/MPL-2.0.txt",
+      "to": "skills/rave-3d-viewer/LICENSE"
     }
   ],
   "sources": [
@@ -88,6 +92,10 @@
         {
           "from": "inst/three-brain-hub/dist/threebrain-hub.mjs.LICENSE.txt",
           "to": "servers/threebrain/threebrain-hub.mjs.LICENSE.txt"
+        },
+        {
+          "from": "examples/mcp/skill.md",
+          "to": "skills/rave-3d-viewer/SKILL.md"
         }
       ]
     },

@@ -1,6 +1,6 @@
 {
-  "version": "0.1.2",
-  "contentHash": "sha256-6d21867fe1a30ec51c286cee1f26d2138837a12ec69a55aea679990e49ca194f",
+  "version": "0.1.3",
+  "contentHash": "sha256-63906d165985a81c6cc61efdb3afc9eeeae1d359b2e1fc89dcafc2fca209846e",
   "sources": {
     "shidashi": {
       "repo": "dipterix/shidashi",

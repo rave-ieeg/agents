@@ -1,13 +1,14 @@
 # Installing `rave-agents`
 
 `rave-agents` lets an AI agent work with [RAVE](https://rave.wiki). It
-contains two MCP servers and three skills:
+contains two MCP servers and four skills:
 
 | Part | What the agent can do with it |
 |---|---|
 | `shidashi` MCP server | Find the RAVE dashboard on your computer, read and set module inputs, run module scripts |
 | `threebrain` MCP server | Control threeBrain 3D brain viewers open in your browser: camera, colors, electrodes, screenshots |
 | `rave` skill | Find (or, with your permission, start) the RAVE app, and know what to ask you before loading data |
+| `rave-3d-viewer` skill | Drive a threeBrain viewer opened on its own, outside the RAVE dashboard: connect it, change the view, color electrodes, fix connection problems |
 | `search-papers` skill | Search PubMed, arXiv and bioRxiv |
 | `build-module-mcp` skill | For RAVE developers: make a RAVE module usable by agents |
 
@@ -44,7 +45,7 @@ R is needed only for some parts:
 
 | To use | You also need |
 |---|---|
-| threeBrain 3D viewers (`threebrain` server) | Nothing else. A threeBrain viewer open in your browser; R is not needed |
+| threeBrain 3D viewers (`threebrain` server, `rave-3d-viewer` skill) | Nothing else. A threeBrain viewer open in your browser; R is not needed |
 | The RAVE dashboard (`shidashi` server, `rave` skill) | R with RAVE installed (`ravemanager::install()`). The `rave` skill's helper script uses the `ravedash` and `jsonlite` packages, which come with RAVE |
 | Paper search (`search-papers` skill) | R with the `httr2` package: `install.packages("httr2")` |
 | Module development (`build-module-mcp` skill) | R, and a clone of [`rave-pipelines`](https://github.com/rave-ieeg/rave-pipelines) |
@@ -181,7 +182,7 @@ CLI skills, copy the folders in `skills/` into `~/.gemini/skills/`.
 ## Other agents
 
 **Skills only.** [`skills`](https://github.com/vercel-labs/skills) installs
-the three skills into many agents (Cline, OpenCode, Zed, Warp and others).
+the four skills into many agents (Cline, OpenCode, Zed, Warp and others).
 It asks which agents to install them for:
 
 ```

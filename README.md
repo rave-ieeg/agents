@@ -8,7 +8,7 @@ other agents what they need to operate RAVE:
 | Part | What the agent can do with it | Comes from |
 |---|---|---|
 | `shidashi` MCP server, `rave` skill | Find the RAVE dashboard, read and set module inputs, run module scripts | [dipterix/shidashi](https://github.com/dipterix/shidashi) |
-| `threebrain` MCP server | Control threeBrain 3D brain viewers in your browser | [dipterix/threeBrain](https://github.com/dipterix/threeBrain) |
+| `threebrain` MCP server, `rave-3d-viewer` skill | Control threeBrain 3D brain viewers in your browser | [dipterix/threeBrain](https://github.com/dipterix/threeBrain) |
 | `search-papers`, `build-module-mcp` skills | Search PubMed, arXiv and bioRxiv; make RAVE modules usable by agents | [rave-ieeg/rave-pipelines](https://github.com/rave-ieeg/rave-pipelines) |
 
 ## Install
@@ -78,4 +78,4 @@ workflow but cannot push code.
 
 GPL-3.0 (see `LICENSE`). The copied components keep their own licenses,
 stored next to them: shidashi and rave-pipelines are MIT, and the
-threeBrain hub is MPL-2.0.
+threeBrain hub and `rave-3d-viewer` skill are MPL-2.0.
