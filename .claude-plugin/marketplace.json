@@ -1,0 +1,28 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "rave-ieeg",
+  "description": "AI agent plugins for RAVE, Reproducible Analysis and Visualization of iEEG (https://rave.wiki)",
+  "owner": {
+    "name": "rave-ieeg"
+  },
+  "plugins": [
+    {
+      "name": "rave-agents",
+      "source": "./",
+      "description": "Let AI agents work with RAVE (Reproducible Analysis and Visualization of iEEG, rave.wiki): drive the RAVE dashboard and its modules, control threeBrain 3D brain viewers, and search the literature.",
+      "category": "productivity",
+      "homepage": "https://rave.wiki",
+      "keywords": [
+        "rave",
+        "yael",
+        "ieeg",
+        "neuroscience",
+        "electrophysiology",
+        "brain",
+        "localization",
+        "threebrain",
+        "mcp"
+      ]
+    }
+  ]
+}
