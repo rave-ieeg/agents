@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "rave-agents",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Let AI agents work with RAVE (Reproducible Analysis and Visualization of iEEG, rave.wiki): drive the RAVE dashboard and its modules, control threeBrain 3D brain viewers, and search the literature.",
   "author": {
     "name": "rave-ieeg",
@@ -12,11 +12,12 @@
   "license": "GPL-3.0",
   "keywords": [
     "rave",
+    "yael",
     "ieeg",
     "neuroscience",
     "electrophysiology",
     "brain",
-    "shiny",
+    "localization",
     "threebrain",
     "mcp"
   ],

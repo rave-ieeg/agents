@@ -1,6 +1,6 @@
 {
   "name": "rave-agents",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Let AI agents work with RAVE (Reproducible Analysis and Visualization of iEEG, rave.wiki): drive the RAVE dashboard and its modules, control threeBrain 3D brain viewers, and search the literature.",
   "mcpServers": {
     "shidashi": {
