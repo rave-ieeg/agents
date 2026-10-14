@@ -1,0 +1,24 @@
+{
+  "version": "0.1.0",
+  "contentHash": "sha256-bcd2dd4740e9c45e1760322ac8918e7844cedd041467f00dfa16b0b559f70abe",
+  "sources": {
+    "shidashi": {
+      "repo": "dipterix/shidashi",
+      "ref": "main",
+      "sha": "6e9db32db5c1c82d1b42779c041ec6f5d3ebd89f",
+      "committed": "2026-10-11T18:26:57-04:00"
+    },
+    "threeBrain": {
+      "repo": "dipterix/threeBrain",
+      "ref": "master",
+      "sha": "c5a906e1761cf85a5549295c8f50d0c96ddcfa29",
+      "committed": "2026-10-13T21:48:11-04:00"
+    },
+    "rave-pipelines": {
+      "repo": "rave-ieeg/rave-pipelines",
+      "ref": "main",
+      "sha": "6cadd37079b2ba7fff94e104515ad24a257c1b86",
+      "committed": "2026-10-08T12:51:19-04:00"
+    }
+  }
+}

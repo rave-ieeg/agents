@@ -1,0 +1,72 @@
+# Brings in the latest files from the upstream repositories (tools/bundle.json)
+# and publishes them on main when the tests pass. Runs when an upstream
+# repository asks for it (tools/notify-rave-agents.yml runs this workflow),
+# once a day as a fallback, or from the "Run workflow" button.
+name: sync
+
+on:
+  schedule:
+    - cron: '17 7 * * *'
+  workflow_dispatch:
+    inputs:
+      source:
+        description: Repository that asked for this run (for the log)
+        required: false
+      sha:
+        description: Its commit (for the log)
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      # No stored credentials: the tests below run the freshly synced
+      # upstream code, so the push token goes to the Publish step only
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Who asked
+        if: inputs.source != ''
+        env:
+          SOURCE_REPOSITORY: ${{ inputs.source }}
+          SOURCE_SHA: ${{ inputs.sha }}
+        run: echo "Requested by $SOURCE_REPOSITORY at $SOURCE_SHA"
+
+      - name: Sync from upstream
+        run: node tools/sync.mjs | tee "$RUNNER_TEMP/sync.txt"
+
+      # Pushes made with GITHUB_TOKEN start no other workflow, so the checks
+      # run here, before anything is published
+      - name: Test
+        run: node --test "tools/test/*.test.mjs"
+      - name: Claude Code accepts the marketplace and plugin
+        run: npx --yes @anthropic-ai/claude-code@2.1.285 plugin validate .
+
+      - name: Publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing changed upstream."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          { echo "Sync from upstream"; echo; cat "$RUNNER_TEMP/sync.txt"; } > "$RUNNER_TEMP/message.txt"
+          git commit -F "$RUNNER_TEMP/message.txt"
+          git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"

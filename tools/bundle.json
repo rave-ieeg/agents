@@ -1,0 +1,118 @@
+{
+  "marketplace": {
+    "name": "rave-ieeg",
+    "displayName": "RAVE",
+    "description": "AI agent plugins for RAVE, Reproducible Analysis and Visualization of iEEG (https://rave.wiki)",
+    "owner": {
+      "name": "rave-ieeg"
+    }
+  },
+  "plugin": {
+    "name": "rave-agents",
+    "displayName": "RAVE Agents",
+    "version": "0.1.0",
+    "description": "Let AI agents work with RAVE (Reproducible Analysis and Visualization of iEEG, rave.wiki): drive the RAVE dashboard and its modules, control threeBrain 3D brain viewers, and search the literature.",
+    "author": {
+      "name": "rave-ieeg",
+      "url": "https://rave.wiki"
+    },
+    "homepage": "https://rave.wiki",
+    "repository": "https://github.com/rave-ieeg/agents",
+    "license": "GPL-3.0",
+    "keywords": [
+      "rave",
+      "ieeg",
+      "neuroscience",
+      "electrophysiology",
+      "brain",
+      "shiny",
+      "threebrain",
+      "mcp"
+    ],
+    "category": "productivity"
+  },
+  "mcpServers": {
+    "shidashi": {
+      "script": "servers/shidashi/shidashi-proxy.mjs",
+      "args": []
+    },
+    "threebrain": {
+      "script": "servers/threebrain/threebrain-hub.mjs",
+      "args": [
+        "mcp"
+      ]
+    }
+  },
+  "localFiles": [
+    {
+      "from": "tools/licenses/MPL-2.0.txt",
+      "to": "servers/threebrain/LICENSE"
+    }
+  ],
+  "sources": [
+    {
+      "id": "shidashi",
+      "repo": "dipterix/shidashi",
+      "ref": "main",
+      "localPath": "../shidashi",
+      "copy": [
+        {
+          "from": "inst/mcp-proxy/shidashi-proxy.mjs",
+          "to": "servers/shidashi/shidashi-proxy.mjs"
+        },
+        {
+          "from": "LICENSE.md",
+          "to": "servers/shidashi/LICENSE.md"
+        },
+        {
+          "from": "inst/mcp-proxy/skills/rave",
+          "to": "skills/rave"
+        },
+        {
+          "from": "LICENSE.md",
+          "to": "skills/rave/LICENSE.md"
+        }
+      ]
+    },
+    {
+      "id": "threeBrain",
+      "repo": "dipterix/threeBrain",
+      "ref": "master",
+      "localPath": "../threeBrain",
+      "copy": [
+        {
+          "from": "inst/three-brain-hub/dist/threebrain-hub.mjs",
+          "to": "servers/threebrain/threebrain-hub.mjs"
+        },
+        {
+          "from": "inst/three-brain-hub/dist/threebrain-hub.mjs.LICENSE.txt",
+          "to": "servers/threebrain/threebrain-hub.mjs.LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "id": "rave-pipelines",
+      "repo": "rave-ieeg/rave-pipelines",
+      "ref": "main",
+      "localPath": "../rave-pipelines",
+      "copy": [
+        {
+          "from": "agents/skills/search-papers",
+          "to": "skills/search-papers"
+        },
+        {
+          "from": "LICENSE.md",
+          "to": "skills/search-papers/LICENSE.md"
+        },
+        {
+          "from": "agents/skills/build-module-mcp",
+          "to": "skills/build-module-mcp"
+        },
+        {
+          "from": "LICENSE.md",
+          "to": "skills/build-module-mcp/LICENSE.md"
+        }
+      ]
+    }
+  ]
+}

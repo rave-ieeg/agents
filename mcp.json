@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "shidashi": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "./servers/shidashi/shidashi-proxy.mjs"
+      ],
+      "cwd": "./"
+    },
+    "threebrain": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "./servers/threebrain/threebrain-hub.mjs",
+        "mcp"
+      ],
+      "cwd": "./"
+    }
+  }
+}

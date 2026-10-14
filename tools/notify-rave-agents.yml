@@ -1,0 +1,34 @@
+# Template: copy to .github/workflows/notify-rave-agents.yml in a repository
+# that rave-ieeg/agents copies files from (tools/bundle.json), then set
+# `branches` and `paths` to that repository's branch and copied paths.
+# Whenever those files change, it asks rave-ieeg/agents to sync
+# (.github/workflows/sync.yml there).
+#
+# Needs the repository secret RAVE_AGENTS_DISPATCH_TOKEN: a fine-grained
+# personal access token limited to the repository rave-ieeg/agents, with the
+# permission "Actions: Read and write". That lets it start the sync workflow,
+# and nothing more: it cannot push code. Without the secret, in forks for
+# example, the job does nothing.
+name: notify rave-ieeg/agents
+
+permissions: {}
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'path/to/copied/files/**'
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.RAVE_AGENTS_DISPATCH_TOKEN }}
+    steps:
+      - name: Ask rave-ieeg/agents to sync
+        if: env.GH_TOKEN != ''
+        run: >
+          gh workflow run sync.yml --repo rave-ieeg/agents --ref main
+          -f "source=${{ github.repository }}"
+          -f "sha=${{ github.sha }}"

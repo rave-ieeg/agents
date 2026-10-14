@@ -1,0 +1,39 @@
+{
+  "name": "rave-agents",
+  "version": "0.1.0",
+  "description": "Let AI agents work with RAVE (Reproducible Analysis and Visualization of iEEG, rave.wiki): drive the RAVE dashboard and its modules, control threeBrain 3D brain viewers, and search the literature.",
+  "author": {
+    "name": "rave-ieeg",
+    "url": "https://rave.wiki"
+  },
+  "homepage": "https://rave.wiki",
+  "repository": "https://github.com/rave-ieeg/agents",
+  "license": "GPL-3.0",
+  "keywords": [
+    "rave",
+    "yael",
+    "ieeg",
+    "neuroscience",
+    "electrophysiology",
+    "brain",
+    "localization",
+    "threebrain",
+    "mcp"
+  ],
+  "displayName": "RAVE Agents",
+  "mcpServers": {
+    "shidashi": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/servers/shidashi/shidashi-proxy.mjs"
+      ]
+    },
+    "threebrain": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/servers/threebrain/threebrain-hub.mjs",
+        "mcp"
+      ]
+    }
+  }
+}
